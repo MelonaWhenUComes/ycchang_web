@@ -1,0 +1,60 @@
+server:
+  port: 18080
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+#logging:
+#  config: classpath:log4j2.yml
+---
+spring:
+  profiles: local
+  datasource:
+    url: jdbc:mariadb://localhost:3306/DB_TEST
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: ycchang
+    password: init1234!
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+#        physical_naming_strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+hikari:
+  auto-commit: false
+  connection-test-query: SELECT 1
+  minimum-idle: 10
+  maximum-pool-size: 50
+  transaction-isolation: TRANSACTION_READ_UNCOMMITTED
+
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDB103Dialect
+    properties:
+      hibernate:
+        format_sql: true
+        hbm2ddl.auto: none
+        #implicit_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+        #physical_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        physical_naming_strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+    open-in-view: false
+    show-sql: true
+    generate-ddl: false
+
+#  jpa:
+#   open-in-view: false
+#    generate-ddl: true
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+server:
+  port: 18080
+
+---
+spring:
+  profiles: dev
+server:
+  port: 18080
+---
+spring:
+  profiles: prod
+server:
+  port: 18080
