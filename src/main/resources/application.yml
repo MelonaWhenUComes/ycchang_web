@@ -14,6 +14,9 @@ spring:
     driver-class-name: org.mariadb.jdbc.Driver
     username: ycchang
     password: init1234!
+  #config:
+  #  import:
+  #      - classpath:/application-app.yml
   jpa:
     hibernate:
       naming:
@@ -45,8 +48,29 @@ hikari:
 #    show-sql: true
 #    hibernate:
 #      ddl-auto: update
+
+#mybatis
+mybatis:
+  configuration:
+    multiple-result-sets-enabled: false
+    map-underscore-to-camel-case: true
+    call-setters-on-nulls: true
+    jdbc-type-for-null: varchar
+    default-fetch-size: 500
+  mapper-locations:
+    - classpath:mybatis/mapper/*.xml
+  config-location: classpath:mybatis-config.xml.bak
+
+app:
+  api:
+    X-Naver-Client-Id: KvsDv5DxEwAf2L8DXwdN
+    X-Naver-Client-Secret: WVY_kT9KeP
+    Naver-News-URI: https://openapi.naver.com/v1/search/news.json
+
+
 server:
   port: 18080
+
 
 ---
 spring:

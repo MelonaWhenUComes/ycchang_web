@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import CommonListComponent from "../module/common/CommonListComponent";
 import TempHeaderHeader from "../module/common/TempHeaderComponent";
 import HoInfoListComponent from "../module/common/HoInfoListComponent";
+import NaverApiListComponent from '../module/openApi/NaverApiListComponent';
 
 const AppRouter = () => {
     return(
@@ -34,7 +35,7 @@ const AppRouter = () => {
                         <Route exact path="/ho" component = {HoInfoListComponent} />
                         <Route path="/common" component = {CommonListComponent} />
                         */}
-                        <Route exact path="/" element = {<HoInfoListComponent />} />
+                        <Route exact path="/" element = {<NaverApiListComponent />} />
                         <Route path="/common" component = {CommonListComponent} />
                     </Routes>
                 </div>

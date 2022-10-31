@@ -2,6 +2,7 @@ package com.hdel.web.service;
 
 import com.hdel.web.hoInfo.HoInfo;
 import com.hdel.web.hoInfo.HoInfoRepository;
+import com.hdel.web.mapper.TestMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Service
 public class HoInfoService {
+    //private final TestMapper testMapper;
     @Autowired
     private HoInfoRepository hoInfoRepository;
 
@@ -19,4 +21,15 @@ public class HoInfoService {
 
         return hoInfos;
     }
+
+    /*@Autowired
+    public HoInfoService(TestMapper testMapper){
+        this.testMapper = testMapper;
+    }
+
+    public HoInfo test() throws Exception {
+        return testMapper.hoInfo();
+    }*/
+
+
 }
