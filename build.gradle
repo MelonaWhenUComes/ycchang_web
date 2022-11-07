@@ -66,3 +66,17 @@ allprojects{
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+//SpringBootApplication 선언된 MainClass
+bootJar {
+	mainClass = 'com.hdel.web'
+}
+//profiles 설정
+/*
+bootRun {
+	execSpec {
+		String activeProfile = System.properties['spring.profiles.dev']
+		systemProperties "spring.profiles.dev", activeProfile
+	}
+}
+*/
