@@ -10,7 +10,7 @@ spring:
 spring:
   profiles: local
   datasource:
-    url: jdbc:mariadb://localhost:3306/DB_TEST
+    url: jdbc:mariadb://172.18.0.1:3306/DB_TEST
     driver-class-name: org.mariadb.jdbc.Driver
     username: ycchang
     password: init1234!
@@ -76,7 +76,7 @@ server:
 spring:
   profiles: dev
   datasource:
-    url: jdbc:mariadb://localhost:3306/DB_TEST
+    url: jdbc:mariadb://172.18.0.1:3306/DB_TEST
     driver-class-name: org.mariadb.jdbc.Driver
     username: ycchang
     password: init1234!
