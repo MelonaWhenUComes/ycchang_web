@@ -68,9 +68,11 @@ tasks.named('test') {
 }
 
 //SpringBootApplication 선언된 MainClass
-bootJar {
-	mainClass = 'com.hdel.web'
-}
+///*
+//bootJar {
+//	mainClass = 'com.hdel.web'
+//}
+//*/
 //profiles 설정
 /*
 bootRun {
