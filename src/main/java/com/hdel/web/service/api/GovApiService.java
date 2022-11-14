@@ -156,8 +156,8 @@ public class GovApiService {
 
             String responseBody = apiHttpRequest.get(apiURI,requestHeaders);
 
-            //timeout 1초
-            Thread.sleep(1000);
+            //timeout 0.7초
+            Thread.sleep(700);
 
             HashMap<String, Object> map = converterUtil.jsonString2Map(converterUtil.xml2JsonString(responseBody));
             HashMap<String, Object> itemsHashMap = new HashMap<>();
