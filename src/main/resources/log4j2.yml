@@ -1,5 +1,6 @@
 Configutation:
   name: Default
+  status: debug
 
   Properties:
     Property:

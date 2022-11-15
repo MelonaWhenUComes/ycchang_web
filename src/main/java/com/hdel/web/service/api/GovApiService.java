@@ -15,6 +15,8 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,8 @@ import java.util.*;
 @Slf4j
 @Service
 public class GovApiService {
+    public static final Logger logger = LoggerFactory.getLogger(GovApiService.class);
+
     @Value("${app.api.Naver-News-URI}")
     private String NAVER_NEWS_API_URI;
 
@@ -136,23 +140,29 @@ public class GovApiService {
         ConverterUtil converterUtil = new ConverterUtil();
         List<List<String>> list1 = ConverterUtil.readToList(readFile);
 
-        for(int y = 1; y< list1.size() ; y++) {//Row
+        logger.debug("test logger !! ");
+
+        for(int y = 1; y< list1.size() ; y++) {//Row 0 라인은 컬럼명
             List<String> line = list1.get(y);
-            for(int x = 0; x<line.size(); x++) {    // Column 0 라인은 컬럼명
-                tempMap.put(String.valueOf(iKey++), String.format("%07d",Integer.parseInt(line.get(x))));
+            for(int x = 0; x<line.size(); x++) {    // Column - 0 컬럼 만 READ
+                if(!line.get(0).equals("") && line.get(0) != null) {
+                    if (x == 0)
+                        tempMap.put(String.valueOf(iKey++), String.format("%07d", Integer.parseInt(line.get(x))));
+                }
+
             }
         }
 
         //2. Read 데이터 토대로 api 호출 (get)
         for(int j = 0 ; j < iKey ; j++) {
-            tempMap.get("" + j);
+            String elevatorNo = tempMap.get("" + j);
 
             //승상기별 API 호출
             Map<String, String> requestHeaders = new HashMap<>();
             String apiURI = "http://apis.data.go.kr/openapi/service/ElevatorSelfCheckService/getSelfCheckList"
                     + "?serviceKey=" + serviceKey
                     + "&yyyymm=" + checkMonth
-                    + "&elevator_no=" + tempMap.get("" + j);
+                    + "&elevator_no=" + elevatorNo;
 
             String responseBody = apiHttpRequest.get(apiURI,requestHeaders);
 
@@ -163,6 +173,8 @@ public class GovApiService {
             HashMap<String, Object> itemsHashMap = new HashMap<>();
 
             //3. API 받아온 데이터 정제
+            logger.debug("**** elevatorNo : " + elevatorNo);
+
             List<HashMap<String, Object>> tempList = new ArrayList<>();
             Class itemClass = (((HashMap<String, Object>) ((HashMap<String, Object>)(((HashMap<String, Object>) map.get("response")).get("body"))).get("items")).get("item")).getClass();
             if(itemClass.getName().equals("java.util.LinkedHashMap")) {
@@ -197,6 +209,8 @@ public class GovApiService {
             resultMap.put("elevatorNo", tempElevatorNo);
             resultMap.put("exceptionCnt", String.valueOf(exceptionCnt));
             resultMap.put("systemManualSendCnt", String.valueOf(systemManualSendCnt));
+
+            logger.debug("elevatorNo : " + tempElevatorNo + " / exceptionCnt : " + String.valueOf(exceptionCnt) + " / systemManualSendCnt : " + String.valueOf(systemManualSendCnt));
 
             list.add(resultMap);
         }
