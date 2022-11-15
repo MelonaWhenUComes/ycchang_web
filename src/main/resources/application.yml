@@ -137,7 +137,8 @@ logging:
   config: classpath:log4j2.yml
 
 server:
-  port: 18081
+#  port: 18081
+  port: 80
 
 ---
 spring:
