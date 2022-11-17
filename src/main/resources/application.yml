@@ -78,8 +78,9 @@ spring:
   datasource:
 #    url: jdbc:mariadb://172.18.0.1:3306/DB_TEST
 #    url: jdbc:mariadb://172.17.0.2:3306/DB_TEST
-# Conntainer name : mariadb
-    url: jdbc:mariadb://mariadb:3306/DB_TEST
+    url: jdbc:mariadb://172.17.0.2:1111/DB_TEST
+# Container name : mariadb
+#    url: jdbc:mariadb://mariadb:3306/DB_TEST
 
     driver-class-name: org.mariadb.jdbc.Driver
     username: ycchang
