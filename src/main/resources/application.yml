@@ -76,7 +76,8 @@ server:
 spring:
   profiles: dev
   datasource:
-    url: jdbc:mariadb://172.18.0.1:3306/DB_TEST
+#    url: jdbc:mariadb://172.18.0.1:3306/DB_TEST
+    url: jdbc:mariadb://172.17.0.2:3306/DB_TEST
     driver-class-name: org.mariadb.jdbc.Driver
     username: ycchang
     password: init1234!
@@ -137,8 +138,8 @@ logging:
   config: classpath:log4j2.yml
 
 server:
-#  port: 18081
-  port: 80
+  port: 18081
+#port: 80
 
 ---
 spring:
