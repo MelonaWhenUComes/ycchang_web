@@ -77,7 +77,7 @@ spring:
   profiles: dev
   datasource:
     #url: jdbc:mariadb://localhost:3306/DB_TEST
-    url: jdbc:mariadb://172.17.0.2:1111/DB_TEST
+    url: jdbc:mariadb://172.18.0.1:1111/DB_TEST
     driver-class-name: org.mariadb.jdbc.Driver
     username: ycchang
     password: init1234!
