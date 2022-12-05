@@ -27,5 +27,11 @@ public class GovApiController {
         govApiService.getSelfCheckDupException();
     }
 
+    @GetMapping(path = "/public/getInspectFromGov")
+    public void getInspectFromGov() throws Exception {
+        govApiService.getInspectFromGov();
+    }
+
+
 
 }
