@@ -32,6 +32,9 @@ public class GovApiController {
         govApiService.getInspectFromGov();
     }
 
-
+    @PostMapping(path = "/public/insertGovElevatorInfoFromGovApi")
+    public void insertGovElevatorInfoFromGovApi() throws Exception {
+        govApiService.insertGovElevatorInfoFromGovApi();
+    }
 
 }

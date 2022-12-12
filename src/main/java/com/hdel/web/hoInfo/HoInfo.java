@@ -13,7 +13,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @ToString
-@Table(name = "GOLDEN_RAW")
+//@Table(name = "GOLDEN_RAW_TEST")
 public class HoInfo {
     @Id
     @GeneratedValue

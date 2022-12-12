@@ -21,7 +21,6 @@ Configutation:
         pattern: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"
 
   Loggers:
-
     Root:
       level: debug
       AppenderRef:
@@ -29,7 +28,7 @@ Configutation:
 
     Logger:
       - name: com.hdel.web
-        level: debug
+        level: info
         AppenderRef:
           - ref: File_Appender
             level: error
