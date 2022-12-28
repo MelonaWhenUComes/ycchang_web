@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 //Mybatis Mapper
 //@Component
 //@MapperScan
+
 public interface TestMapper {
     HoInfo hoInfo() throws Exception;
 }

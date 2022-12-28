@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography'
 import CreateIcon from '@material-ui/icons/Create'
 import DeleteIcon from '@material-ui/icons/Delete'
 import { TextField } from "@material-ui/core";
+import KakaoApiService from "../../../api/openApi/KakaoApiService";
 
 class NaverApiListComponent extends Component{
 
@@ -64,6 +65,15 @@ class NaverApiListComponent extends Component{
         })
     }
  
+    kakaoLogin = () => {
+        KakaoApiService.getKakaoAccessKey()
+        .then( res => {
+            window.open(res.data, '_self')
+        })
+        .catch(err => {
+            console.log('Kakao Api Err ! ', err)
+        })
+    }
 
 
 /**
@@ -101,6 +111,8 @@ class NaverApiListComponent extends Component{
                     <TextField type="text" placeholder="검색어 입력" name="queryText" value={this.state.queryText} onChange={this.onChange} />
                      
                     <Button variant="contained" color="primary" onClick={this.getNaverNewsList}>Get News</Button>
+
+                    <Button variant="contained" color="primary" onClick={this.kakaoLogin}>Kakao Login</Button>
                 </form>
                 <Table>
                     <TableHead>

@@ -463,15 +463,14 @@ public class GovApiService {
                     govElevatorInfoRepository.save(govElevatorInfo);
 
                     insertCnt ++;
-
                 }
-                break;
+                //break;
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
-        return 1;
+        return insertCnt;
     }
 
 }
